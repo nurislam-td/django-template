@@ -26,7 +26,9 @@ DJANGO_APPS = [
 
 THIRD_PART_APPS = []
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "apps.user",
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PART_APPS + LOCAL_APPS
 
@@ -103,3 +105,4 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = "user.User"
