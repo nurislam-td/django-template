@@ -1,0 +1,27 @@
+[project]
+name = "shop-ninja"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.2.5",
+    "django-environ>=0.12.0",
+    "django-ninja>=1.4.3",
+    "gunicorn>=23.0.0",
+    "psycopg>=3.2.9",
+    "psycopg2-binary>=2.9.10",
+]
+
+[dependency-groups]
+dev = [
+    "django-debug-toolbar>=6.0.0",
+    "django-extensions>=4.1",
+    "django-stubs[compatible-mypy]>=5.2.2",
+    "djangorestframework-stubs>=3.16.2",
+    "djlint>=1.36.4",
+    "mypy>=1.17.1",
+    "pytest>=8.4.1",
+    "pytest-django>=4.11.1",
+    "ruff>=0.12.9",
+]

@@ -1,0 +1,40 @@
+
+x-common-service: &common
+  build:
+    context: ./
+    dockerfile: docker/Dockerfile
+  volumes:
+    - .:/app/
+    - static:/app/static
+    - media:/app/media
+  env_file:
+    - ./.env
+  depends_on:
+    - db
+  restart: always
+  environment:
+    - POSTGRES_HOST=postgres
+
+
+
+services:
+  django:
+    <<: *common
+    container_name: django-app
+    command: gunicorn --workers=1 --threads=2 config.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+
+  db:
+    restart: always
+    image: pgvector/pgvector:pg17
+    container_name: postgres-db
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data-prod:/var/lib/postgresql/data/
+      
+volumes:
+  static: {}
+  media: {}
+  db-data-prod: {}
